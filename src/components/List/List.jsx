@@ -9,9 +9,9 @@ export default function List({ options, onCheckbox, onClick }) {
             {options.map(({ name, number, id, status, checked }) => {
                 const cx = classNames.bind(styles)
     
-                let className = cx({
-        text: true,
-      text_active: checked === true
+    let className = cx({
+    text: true,
+    text_active: checked === true,
     });
                 return (
                     <li key={id}>
