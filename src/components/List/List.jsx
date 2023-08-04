@@ -1,11 +1,12 @@
 export default function List({ options, onCheckbox, onClick }) {
     return (
         <ul>
-            {options.map(({name, number, id, checked}) => {
+            {options.map(({name, number, id,status, checked}) => {
                 return (
                     <li key={id}>
-                        <p>{name}</p>
-                        <p>{number}</p>
+                        <p>Ім'я: {name}</p>
+                        <p>Номер: {number}</p>
+                        <p>Статус: {status}</p>
                         <input type="checkbox"
                         checked={checked}
                         onChange={()=> onCheckbox(id)}/>

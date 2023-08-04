@@ -9,13 +9,27 @@ export default class App extends Component {
     contacts: [],
     filter: ''
   }
+STORAGE_KEY = "phonebook-data"
+  componentDidMount() {
+    const data = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
+    if (data) {
+      this.setState({
+        contacts: data
+      })
+    }
+  }
 
-  handleFromData = ({name, number}) => {
+  componentDidUpdate() {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.state.contacts))
+  }
+
+  handleFromData = ({name, number,status}) => {
     const contact = {
       name,
       number,
       id: nanoid(),
-      checked: false
+      checked: false,
+      status
     }
     this.setState(({ contacts }) => ({
      contacts: [contact, ...contacts]
@@ -70,15 +84,16 @@ export default class App extends Component {
  return (
     <div>
      <Form onSubmit={this.handleFromData} />
-     <Filter onChange={this.handleFilter}
-       value={filter} />
+     {filteredContacts.length >= 2 && <Filter onChange={this.handleFilter}
+       value={filter} />}
      <List options={filteredContacts}
        onCheckbox={this.toggleChecbox}
        onClick={this.deleteContactById}
        
      />
-     <button onClick={this.deleteAllContacts} type='button'>Delete all</button>
-     <button onClick={this.deleteChecked} type='button'>Delete checked</button>
+     {filteredContacts.length >= 2 &&
+     <div><button onClick={this.deleteAllContacts} type='button'>Delete all</button>
+     <button onClick={this.deleteChecked} type='button'>Delete checked</button></div>}
     </div>
       );
   }

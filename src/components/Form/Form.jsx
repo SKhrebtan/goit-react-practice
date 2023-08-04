@@ -4,6 +4,7 @@ export default class Form extends Component {
     state = {
         name: '',
         number: '',
+        status: '',
         checked: false,
     }
 
@@ -38,7 +39,7 @@ this.setState({name: '',
 checked: false})
     }
     render() {
-        const { name, number, checked } = this.state;
+        const { name, number, checked,status } = this.state;
         return (
             <form onSubmit={this.handleSubmit}>
              <label>
@@ -49,7 +50,7 @@ checked: false})
                         value={name}
             onChange={this.handleInput}></input>
             </label>
-            
+            <br/>
           <label>
             ВВедіть номер
             <input
@@ -58,8 +59,33 @@ checked: false})
                         value={number}
             id={this.numberId}
             onChange={this.handleInput}></input>
-            </label>
-
+                </label>
+                <br/>
+                <label>
+                    друг
+                    <input type="radio"
+                    name="status"
+                    value="друг"
+                    onChange={this.handleInput}
+                    checked={status === "друг"}></input>
+                </label>
+                <label>
+                    ворог
+                    <input type="radio"
+                    name="status"
+                        value="ворог"
+                        onChange={this.handleInput}
+                    checked={status === "ворог"}></input>
+                </label>
+                <label>
+                    родич
+                    <input type="radio"
+                    name="status"
+                        value="родич"
+                        onChange={this.handleInput}
+                    checked={status === "родич"}></input>
+                </label>
+<br/>
               <label> Згоден
             <input
             type="checkbox"
