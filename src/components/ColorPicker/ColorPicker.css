@@ -1,9 +1,13 @@
+.colorDiv {
+  width: 600px;
+}
 .color_picker {
-  width: 300px;
+  min-width: 100%;
   padding: 10px;
   border: 1px solid black;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .title {
