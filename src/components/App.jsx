@@ -21,18 +21,26 @@ export default class App extends Component {
     ],
     id: ''
   }
-STORAGE_KEY = "phonebook-data"
+  STORAGE_PHONE_KEY = "phonebook-data"
+  STORAGE_COLOR_KEY = "color-picker-data"
   componentDidMount() {
-    const data = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
+    const data = JSON.parse(localStorage.getItem(this.STORAGE_PHONE_KEY));
+    const colorData = JSON.parse(localStorage.getItem(this.STORAGE_COLOR_KEY));
     if (data) {
       this.setState({
         contacts: data
       })
     }
+     if (colorData) {
+      this.setState({
+        options: colorData
+      })
+    }
   }
 
   componentDidUpdate() {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.state.contacts))
+    localStorage.setItem(this.STORAGE_PHONE_KEY, JSON.stringify(this.state.contacts));
+     localStorage.setItem(this.STORAGE_COLOR_KEY, JSON.stringify(this.state.options))
   }
 
   handleFromData = ({name, number,status}) => {
@@ -53,6 +61,7 @@ STORAGE_KEY = "phonebook-data"
       filter: e.currentTarget.value
     })
   }
+  
   toggleChecbox = (id) => {
     this.setState(prevState => ({
       contacts: prevState.contacts.map(contact => {
@@ -78,17 +87,20 @@ STORAGE_KEY = "phonebook-data"
     contacts: contacts.filter(contact => contact.checked !== true)
         }))
   }
+
   deleteContactById = id => {
     this.setState(({ contacts }) => ({
       contacts: contacts.filter(contact => contact.id !==id)
     }))
   }
+
   getFilteredContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter( contact => contact.name.toLowerCase().includes(normalizedFilter))
-}
+  }
+  
   onColorSubmit = ({ label, color }) => {
     const { options } = this.state;
     if (options.find(option => option.label.includes(label)) ) {
@@ -102,23 +114,18 @@ STORAGE_KEY = "phonebook-data"
     this.setState( ({options})=> ({
       options: [...options, option]
     }))
-    
-  }
+      }
   
   handleColorDelete = id => {
-    if (this.state.options.length === 1) {
-      return
-    }
-    this.setState(({ options }) =>       ({
+       this.setState(({ options }) => ({
       options: options.filter(option =>option.id !== id)
     }))
-    console.log(this.state.options)
-  }
+     }
 
   handleActiveColor = id => {
-    console.log(id)
-    this.setState({id})
+       this.setState({id})
   }
+
   render() {
     const { filter,options,id } = this.state;
     const filteredContacts = this.getFilteredContacts()
@@ -137,7 +144,7 @@ STORAGE_KEY = "phonebook-data"
          <button onClick={this.deleteChecked} type='button'>Delete checked</button></div>}
      <ColorPickerForm onSubmit={this.onColorSubmit} />
      <ColorPicker onClick={this.handleActiveColor}  options={options}    />
-     <button type='button' onClick={() => this.handleColorDelete(id)}>DeleteColor</button>
+     {options.length > 0 && <button type='button' onClick={() => this.handleColorDelete(id)}>DeleteColor</button>}
     </div>
       );
   }

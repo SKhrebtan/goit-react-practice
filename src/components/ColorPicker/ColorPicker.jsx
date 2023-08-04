@@ -1,11 +1,19 @@
 import { Component } from 'react';
 import './ColorPicker.css'
-// // import classNames from 'classnames/bind';
-// // import styles from './ColorPicker.module.css'
+
 export default class ColorPicker extends Component {
     state = {
         activeOptionIndex: 0,
+        label: ''
             }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.label === this.state.label) {
+        this.setState({label: 'Оберіть колір'})
+        }
+          if (prevState.activeOptionIndex === this.state.activeOptionIndex) {
+        this.setState({activeOptionIndex: null})
+    }
+}
     makeOptionClass = (index) => {
         const optionClasses = ['option'];
         if (this.state.activeOptionIndex === index) {
@@ -14,21 +22,22 @@ export default class ColorPicker extends Component {
          return optionClasses.join(' ')
     }
     
-    setActiveIndex = (index, id) => {
+    setActiveIndex = (index, id, label) => {
         this.setState({
-    activeOptionIndex: index,
+            activeOptionIndex: index,
+            label
         })
         this.props.onClick(id)
     }
     render() {
         const { options } = this.props;
-        const { activeOptionIndex } = this.state;
-        const { label } = options[activeOptionIndex];
+        const { label } = this.state;
+      
       
         return (
             <div className='colorDiv' >
                 <h1>Color Picker</h1>
-                <p>Chosen color:{label}</p>
+                {options.length > 0 && <p>Chosen color:{label}</p>}
                 <ul className='color_picker'>
                     {options.map(({ label, color, id }, index) => {
                     
@@ -37,7 +46,7 @@ export default class ColorPicker extends Component {
                                 id={id}
                                 className={this.makeOptionClass(index)}
                                 style={{ backgroundColor: color }}
-                                onClick={() => this.setActiveIndex(index, id)}
+                                onClick={() => this.setActiveIndex(index, id, label)}
                             ></button>
                             
                         </li>)

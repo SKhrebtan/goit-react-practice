@@ -8,7 +8,7 @@ export default class ColorPickerForm extends Component {
     handleInput = e => {
         const { name , value } = e.currentTarget;
         this.setState({
-            [name]: value
+            [name]: value.toLowerCase().trim()
         })
     }
     onFormSubmit = e => {
@@ -32,6 +32,7 @@ this.props.onSubmit(this.state)
                 <label>
                     HEX
                     <input 
+                    pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
                     type="text"
                     name="color"
                     value={color}
