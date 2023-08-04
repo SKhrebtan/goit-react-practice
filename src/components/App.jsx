@@ -3,6 +3,8 @@ import List from './List/List';
 import Form from './Form/Form';
 import Filter from './Filter/Filter'
 import { nanoid } from 'nanoid';
+import { options } from './ColorPicker/options';
+import ColorPicker from './ColorPicker/ColorPicker';
 
 export default class App extends Component {
   state = {
@@ -93,7 +95,8 @@ STORAGE_KEY = "phonebook-data"
      />
      {filteredContacts.length >= 2 &&
      <div><button onClick={this.deleteAllContacts} type='button'>Delete all</button>
-     <button onClick={this.deleteChecked} type='button'>Delete checked</button></div>}
+         <button onClick={this.deleteChecked} type='button'>Delete checked</button></div>}
+     <ColorPicker options={options} />
     </div>
       );
   }

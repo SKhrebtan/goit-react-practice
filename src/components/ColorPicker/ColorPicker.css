@@ -1,0 +1,25 @@
+.color_picker {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid black;
+  list-style: none;
+  display: flex;
+}
+
+.title {
+  line-height: 1.3p;
+}
+
+.option {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  transition: transform 250ms linear;
+  border: none;
+  outline: none;
+}
+
+.option_active {
+  transform: scale(1.25);
+}
