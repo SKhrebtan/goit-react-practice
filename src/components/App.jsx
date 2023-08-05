@@ -19,8 +19,9 @@ export default class App extends Component {
     { label: 'pink', color: '#e91e63', id: 5},
     { label: 'indigo', color: '#3f51b5', id: 6},
     ],
-    id: ''
-  }
+    id: '',
+    label: '',
+      }
   STORAGE_PHONE_KEY = "phonebook-data"
   STORAGE_COLOR_KEY = "color-picker-data"
   componentDidMount() {
@@ -78,7 +79,8 @@ export default class App extends Component {
 
       deleteAllContacts = () => {
     this.setState({
-    contacts: []
+      contacts: []
+      
         })
   }
 
@@ -122,12 +124,13 @@ export default class App extends Component {
     }))
      }
 
-  handleActiveColor = id => {
-       this.setState({id})
-  }
+  handleActiveColor = (id, label) => {
+    this.setState({ id, label, })
+    console.log(label)
+    }
 
   render() {
-    const { filter,options,id } = this.state;
+    const { filter,options,id, label } = this.state;
     const filteredContacts = this.getFilteredContacts()
  return (
     <div>
@@ -144,7 +147,12 @@ export default class App extends Component {
          <button onClick={this.deleteChecked} type='button'>Delete checked</button></div>}
      <ColorPickerForm onSubmit={this.onColorSubmit} />
      <ColorPicker onClick={this.handleActiveColor}  options={options}    />
-     {options.length > 0 && <button type='button' onClick={() => this.handleColorDelete(id)}>DeleteColor</button>}
+     {options.length > 0 &&
+       <button
+         type='button'
+         onClick={() => this.handleColorDelete(id)}
+         disabled={label ? false : true}
+       >DeleteColor</button>}
     </div>
       );
   }

@@ -3,10 +3,10 @@ import './ColorPicker.css'
 
 export default class ColorPicker extends Component {
     state = {
-        activeOptionIndex: 0,
+        activeOptionIndex: '' ,
         label: ''
             }
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps, prevState) {
         if (prevState.label === this.state.label) {
         this.setState({label: 'Оберіть колір'})
         }
@@ -27,7 +27,7 @@ export default class ColorPicker extends Component {
             activeOptionIndex: index,
             label
         })
-        this.props.onClick(id)
+        this.props.onClick(id, label)
     }
     render() {
         const { options } = this.props;
