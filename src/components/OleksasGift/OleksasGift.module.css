@@ -1,7 +1,8 @@
 .div {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  justify-content: center;
+  gap: 50px;
 }
 .heart {
   color: red;
@@ -43,4 +44,8 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.title {
+  color: springgreen;
 }
