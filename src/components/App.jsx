@@ -114,19 +114,25 @@ export default class App extends Component {
       id: nanoid()
     }
     this.setState( ({options})=> ({
-      options: [...options, option]
+      options: [...options, option],
+      label: "",
     }))
       }
   
   handleColorDelete = id => {
-       this.setState(({ options }) => ({
-      options: options.filter(option =>option.id !== id)
+         this.setState(({ options }) => ({
+           options: options.filter(option => option.id !== id),
+           label: ""
     }))
+
      }
 
   handleActiveColor = (id, label) => {
-    this.setState({ id, label, })
-    console.log(label)
+    this.setState({ id, })
+    this.setState(prevState => ({
+      label: prevState.label !== label ? label : "" 
+    }))
+    console.log(this.state.label)
     }
 
   render() {
@@ -146,7 +152,7 @@ export default class App extends Component {
      <div><button onClick={this.deleteAllContacts} type='button'>Delete all</button>
          <button onClick={this.deleteChecked} type='button'>Delete checked</button></div>}
      <ColorPickerForm onSubmit={this.onColorSubmit} />
-     <ColorPicker onClick={this.handleActiveColor}  options={options}    />
+     <ColorPicker onClick={this.handleActiveColor}  options={options}  label={label}  />
      {options.length > 0 &&
        <button
          type='button'

@@ -7,13 +7,13 @@ export default class ColorPicker extends Component {
         label: ''
             }
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.label === this.state.label) {
-        this.setState({label: 'Оберіть колір'})
+       
+        if (prevState.label === prevProps.label && prevState.activeOptionIndex === this.state.activeOptionIndex) {
+        this.setState({label: 'Оберіть колір', activeOptionIndex: null})
         }
-          if (prevState.activeOptionIndex === this.state.activeOptionIndex) {
-        this.setState({activeOptionIndex: null})
+      
     }
-}
+
     makeOptionClass = (index) => {
         const optionClasses = ['option'];
         if (this.state.activeOptionIndex === index) {
