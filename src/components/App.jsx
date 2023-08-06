@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid';
 // import { options } from './ColorPicker/options';
 import ColorPicker from './ColorPicker/ColorPicker';
 import ColorPickerForm from './ColorPickerFrom/ColorPickerForm';
+import OleksasGift from './OleksasGift/OleksasGift'
 
 export default class App extends Component {
   state = {
@@ -159,7 +160,9 @@ export default class App extends Component {
          onClick={() => this.handleColorDelete(id)}
          disabled={label ? false : true}
        >DeleteColor</button>}
-    </div>
+      <OleksasGift />
+   </div>
+  
       );
   }
  

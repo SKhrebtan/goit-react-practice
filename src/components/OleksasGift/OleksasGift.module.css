@@ -1,0 +1,46 @@
+.div {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.heart {
+  color: red;
+  pointer-events: none;
+}
+
+.heart_2 {
+  color: fuchsia;
+  pointer-events: none;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.thumb {
+  width: 441px;
+  height: 453px;
+}
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.p {
+  margin: 0;
+  margin-bottom: 15px;
+  color: blue;
+  text-align: center;
+}
+.span {
+  color: gold;
+}
+
+.heartdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
