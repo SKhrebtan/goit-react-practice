@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/goit-react-practice/static/css/main.3aea6659.css",
-    "main.js": "/goit-react-practice/static/js/main.b7ce2f6b.js",
+    "main.css": "/goit-react-practice/static/css/main.d3908095.css",
+    "main.js": "/goit-react-practice/static/js/main.8e6209a9.js",
     "static/media/t777.jpg": "/goit-react-practice/static/media/t777.2b31613b4e2df63ca51c.jpg",
     "static/media/t725.jpg": "/goit-react-practice/static/media/t725.6803b7d1d8a0c8a7b231.jpg",
     "index.html": "/goit-react-practice/index.html",
-    "main.3aea6659.css.map": "/goit-react-practice/static/css/main.3aea6659.css.map",
-    "main.b7ce2f6b.js.map": "/goit-react-practice/static/js/main.b7ce2f6b.js.map"
+    "main.d3908095.css.map": "/goit-react-practice/static/css/main.d3908095.css.map",
+    "main.8e6209a9.js.map": "/goit-react-practice/static/js/main.8e6209a9.js.map"
   },
   "entrypoints": [
-    "static/css/main.3aea6659.css",
-    "static/js/main.b7ce2f6b.js"
+    "static/css/main.d3908095.css",
+    "static/js/main.8e6209a9.js"
   ]
 }
