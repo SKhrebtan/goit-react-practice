@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import css from './ColorPickerForm.module.css'
 export default class ColorPickerForm extends Component {
     state = {
         label: '',
@@ -20,25 +20,27 @@ this.props.onSubmit(this.state)
     render() {
         const {label,color} = this.state
         return (
-            <form onSubmit={this.onFormSubmit}>
-                <label>
+            <form className={css.form} onSubmit={this.onFormSubmit}>
+                <label className={css.label}>
                     Color
                     <input 
+                        className={css.input}
                     type="text"
                     name="label"
                     value={label}
                     onChange={this.handleInput}></input>
                 </label>
-                <label>
+                <label className={css.label}>
                     HEX
                     <input 
+                        className={css.input}
                     pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
                     type="text"
                     name="color"
                     value={color}
                     onChange={this.handleInput}></input>
                  </label>
-                <button type="submit">Add color</button>
+                <button className={css.addcolorbtn}type="submit">Add color</button>
             </form>
         )
     }

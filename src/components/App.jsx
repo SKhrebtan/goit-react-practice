@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 import ColorPicker from './ColorPicker/ColorPicker';
 import ColorPickerForm from './ColorPickerFrom/ColorPickerForm';
 import OleksasGift from './OleksasGift/OleksasGift'
-
+import '../index.css'
 export default class App extends Component {
   state = {
     contacts: [],
@@ -156,6 +156,7 @@ export default class App extends Component {
      <ColorPicker onClick={this.handleActiveColor}  options={options}  label={label}  />
      {options.length > 0 &&
        <button
+         className='colordelete'
          type='button'
          onClick={() => this.handleColorDelete(id)}
          disabled={label ? false : true}

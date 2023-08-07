@@ -41,7 +41,7 @@ export default class ColorPicker extends Component {
                 <ul className='color_picker'>
                     {options.map(({ label, color, id }, index) => {
                     
-                        return (<li key={label}>
+                        return (<li key={label} className='item'>
                             <button type='button'
                                 id={id}
                                 className={this.makeOptionClass(index)}
